@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Waifu from './waifu.jsx'
 import './index.css'
+import Type from './type.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Waifu />
+    <Type/>
   </React.StrictMode>,
 )
