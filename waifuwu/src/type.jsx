@@ -3,7 +3,7 @@ import Waifu from "./waifu"
 export const WaifuContext = createContext()
 
 export default function Type(){
-    const [types, setTypes] = useState('')
+    const [types, setTypes] = useState('maid')
     const [image, setImage] = useState('')
     const [category, setCategory] = useState('')
 
@@ -24,9 +24,9 @@ export default function Type(){
                     'Content-Type': 'application/json'
                 }
             }
-            const res = await fetch(`https://api.waifu.pics/${types}/${category}`, options)
+            const res = await fetch(`https://api.waifu.im/search?included_tags=${types}&included_tags=${category}&height=>=1000`, options)
             const ans = await res.json()
-            setImage(ans.url)
+            setImage(ans.images[0].url)
         }
         if(types && category){
         FetchWaifu()
@@ -38,16 +38,18 @@ export default function Type(){
         <section className="flex flex-col gap-y-12">
         <div className="flex gap-x-8 items-center justify-center mt-8">
             <select value={types} name="types" id="types" className="bg-white rounded-2xl p-4 w-24 h-12 text-sm" onChange={handleChange}>
-                <option value="sfw">SFW</option>
-                <option value="nsfw">NSFW</option>
+                <option value="waifu">Waifu</option>
+                <option value="maid">Maid</option>
+                <option value="oppai">Oppai</option>
+                <option value="selfie">Selfie</option>
             </select>
 
             <select value={category} name="category" id="category" className="bg-white rounded-2xl p-4 w-36 h-12 text-sm" onChange={handleCategoryChange}>
-                <option value="waifu">Waifu</option>
-                <option value="neko">Neko</option>
-                <option value="shinobu">Shinobu</option>
-                <option value="megumin">Megumin</option>
-                <option value="bully">Bully</option>
+                <option value="oral">Oral</option>
+                <option value="ass">Ass</option>
+                <option value="ecchi">Ecchi</option>
+                <option value="hentai">Hentai</option>
+                <option value="milf">Milf</option>
             </select>
         </div>
 
